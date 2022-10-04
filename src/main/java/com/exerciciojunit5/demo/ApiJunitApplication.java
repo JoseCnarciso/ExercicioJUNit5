@@ -10,9 +10,6 @@ public class ApiJunitApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiJunitApplication.class, args);
 
-		//User user = new User(1,"Francisco","Josecdia@gmail.com","Jose19872828");
-
-		//System.out.println(user);
 	}
 
 }

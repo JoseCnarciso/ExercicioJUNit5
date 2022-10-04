@@ -4,5 +4,5 @@ import com.exerciciojunit5.demo.models.User;
 
 
 public interface UserService {
-    User findById( Integer id);
+    User findById(Integer id);
 }
