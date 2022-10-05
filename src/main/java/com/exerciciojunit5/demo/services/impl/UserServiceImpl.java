@@ -1,9 +1,11 @@
 package com.exerciciojunit5.demo.services.impl;
 
 import com.exerciciojunit5.demo.models.User;
+import com.exerciciojunit5.demo.models.dtos.UserDTO;
 import com.exerciciojunit5.demo.repositories.UserRepository;
 import com.exerciciojunit5.demo.services.UserService;
 import com.exerciciojunit5.demo.services.exceptions.ObjectNotFoundException;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository repository;
+    @Autowired
+    private ModelMapper mapper;
 
     @Override
     public User findById( Integer id ) {
@@ -26,5 +30,10 @@ public class UserServiceImpl implements UserService {
     @GetMapping
     public List<User> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public User create( UserDTO obj ) {
+        return repository.save(mapper.map(obj,User.class));
     }
 }
